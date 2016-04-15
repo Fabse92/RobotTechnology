@@ -1,11 +1,421 @@
 \subsection*{Task 1.1}
 
+The positions of the vertices A to E in respect to the origin M are:
+\begin{align*}
+A = 
+\begin{pmatrix}
+- 6\,cm \\
+- 6\,cm \\
+0\,cm
+\end{pmatrix}, 
+B =
+\begin{pmatrix}
+  6\,cm \\
+- 6\,cm \\
+0\,cm
+\end{pmatrix},
+C =
+\begin{pmatrix}
+6\,cm \\
+6\,cm \\
+0\,cm
+\end{pmatrix},
+D =
+\begin{pmatrix}
+- 6\,cm \\
+6\,cm \\
+0\,cm
+\end{pmatrix},
+E =
+\begin{pmatrix}
+0\,cm \\
+0\,cm \\
+40\,cm
+\end{pmatrix}
+\end{align*}
+
+The three rotations that will be applied are:
+\begin{align*}
+R_1 = 
+\begin{pmatrix}
+cos\phi & -sin\phi & 0 & 0 \\
+sin\phi & cos\phi & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 
+\end{pmatrix}, 
+R_2 = 
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & cos\psi & -sin\psi & 0 \\
+0 & sin\psi & cos\psi & 0 \\
+0 & 0 & 0 & 1 
+\end{pmatrix}, 
+R_3 = 
+\begin{pmatrix}
+cos\theta & 0 & sin\theta & 0 \\
+0 & 1 & 0 & 0 \\
+-sin\theta & 0 & cos\theta & 0 \\
+0 & 0 & 0 & 1 
+\end{pmatrix}
+\end{align*}
+
+With $\phi = 30\degree, \psi = 45\degree \text{ and } \theta = -30\degree$
+
 \subsubsection*{1.1.1}
+
+The location of a vertex V after the sequence of rotations $R_1, R_2 \text{ and } R_3$ using the \textbf{intrinsic} rotation axes $M_w, M_u\ \text{ and } M_v$ is calculated as:
+
+\begin{align*}
+V' &= R_1\cdot R_2\cdot R_3\cdot V = R_{123} \cdot V \\
+R_{123} &= 
+\begin{pmatrix}
+cos\phi & -sin\phi & 0 & 0 \\
+sin\phi & cos\phi & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & cos\psi & -sin\psi & 0 \\
+0 & sin\psi & cos\psi & 0 \\
+0 & 0 & 0 & 1 
+\end{pmatrix} 
+\cdot
+\begin{pmatrix}
+cos\theta & 0 & sin\theta & 0 \\
+0 & 1 & 0 & 0 \\
+-sin\theta & 0 & cos\theta & 0 \\
+0 & 0 & 0 & 1 
+\end{pmatrix}\\
+ &=
+\begin{pmatrix}
+cos\phi & -sin\phi\cdot cos\psi & sin\phi\cdot sin\psi & 0 \\
+sin\phi & cos\phi\cdot cos\psi & -cos\phi\cdot sin\psi & 0 \\
+0 & sin\psi & cos\psi  & 0 \\
+0 & 0 & 0 & 1  
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+cos\theta & 0 & sin\theta & 0 \\
+0 & 1 & 0 & 0 \\
+-sin\theta & 0 & cos\theta & 0 \\
+0 & 0 & 0 & 1 
+\end{pmatrix}\\
+ &=
+ \begin{pmatrix}
+ cos\phi\cdot cos\theta-sin\phi\cdot sin\psi \cdot sin\theta & -sin\phi\cdot cos\psi & cos\phi \cdot sin\theta + sin\phi\cdot sin\psi \cdot cos\theta & 0 \\
+ sin\phi \cdot cos\theta+cos\phi\cdot sin\psi\cdot sin\theta & cos\phi\cdot cos\psi &  sin\phi \cdot sin\theta -cos\phi\cdot sin\psi \cdot cos\theta & 0 \\
+ -cos\psi \cdot sin\theta & sin\psi & cos\psi \cdot cos\theta  & 0 \\
+ 0 & 0 & 0 & 1  
+ \end{pmatrix}\\
+ &=
+ \begin{pmatrix}
+ \sqrt{0.75}\cdot \sqrt{0.75}-0.5\cdot \sqrt{0.5} \cdot (-0.5) & -0.5\cdot \sqrt{0.5} & \sqrt{0.75} \cdot (-0.5) + 0.5\cdot \sqrt{0.5} \cdot \sqrt{0.75} & 0 \\
+ 0.5 \cdot \sqrt{0.75}+\sqrt{0.75}\cdot \sqrt{0.5}\cdot (-0.5) & \sqrt{0.75}\cdot \sqrt{0.5} &  0.5 \cdot (-0.5) -\sqrt{0.75}\cdot \sqrt{0.5} \cdot \sqrt{0.75} & 0 \\
+ -\sqrt{0.5} \cdot (-0.5) & \sqrt{0.5} & \sqrt{0.5} \cdot \sqrt{0.75}  & 0 \\
+ 0 & 0 & 0 & 1  
+ \end{pmatrix}\\
+ &=
+ \begin{pmatrix}
+0.9268 & -\sqrt{0.125} & -0.1268 & 0 \\
+0.1268 & \sqrt{0.375} &  -0.7803 & 0 \\
+\sqrt{0.125} & \sqrt{0.5} & \sqrt{0.375}  & 0 \\
+ 0 & 0 & 0 & 1  
+ \end{pmatrix}
+\end{align*}
+
+Therefore the locations of the vertices after the rotation $R_{123}$ are:
+
+\begin{align*}
+A' &= R_{123} \cdot A \\
+   &= 
+\begin{pmatrix}
+0.9268 & -\sqrt{0.125} & -0.1268 & 0 \\
+0.1268 & \sqrt{0.375} &  -0.7803 & 0 \\
+\sqrt{0.125} & \sqrt{0.5} & \sqrt{0.375}  & 0 \\
+0 & 0 & 0 & 1  
+\end{pmatrix}
+\cdot 
+\begin{pmatrix}
+- 6\,cm \\
+- 6\,cm \\
+0\,cm \\
+0
+\end{pmatrix}
+=
+\begin{pmatrix}
+- 3.439\,cm \\
+- 4.435\,cm \\
+-6.364\,cm \\
+0
+\end{pmatrix}\\
+B' &= R_{123} \cdot B \\
+&= 
+\begin{pmatrix}
+0.9268 & -\sqrt{0.125} & -0.1268 & 0 \\
+0.1268 & \sqrt{0.375} &  -0.7803 & 0 \\
+\sqrt{0.125} & \sqrt{0.5} & \sqrt{0.375}  & 0 \\
+0 & 0 & 0 & 1  
+\end{pmatrix}
+\cdot 
+\begin{pmatrix}
+6\,cm \\
+- 6\,cm \\
+0\,cm \\
+0
+\end{pmatrix}
+=
+\begin{pmatrix}
+7.682\,cm \\
+- 2.913\,cm \\
+-2.121\,cm \\
+0
+\end{pmatrix}\\
+C' &= R_{123} \cdot C \\
+&= 
+\begin{pmatrix}
+0.9268 & -\sqrt{0.125} & -0.1268 & 0 \\
+0.1268 & \sqrt{0.375} &  -0.7803 & 0 \\
+\sqrt{0.125} & \sqrt{0.5} & \sqrt{0.375}  & 0 \\
+0 & 0 & 0 & 1  
+\end{pmatrix}
+\cdot 
+\begin{pmatrix}
+6\,cm \\
+6\,cm \\
+0\,cm \\
+0
+\end{pmatrix}
+=
+\begin{pmatrix}
+3.439\,cm \\
+4.435\,cm \\
+6.364\,cm \\
+0
+\end{pmatrix}\\
+D' &= R_{123} \cdot D \\
+&= 
+\begin{pmatrix}
+0.9268 & -\sqrt{0.125} & -0.1268 & 0 \\
+0.1268 & \sqrt{0.375} &  -0.7803 & 0 \\
+\sqrt{0.125} & \sqrt{0.5} & \sqrt{0.375}  & 0 \\
+0 & 0 & 0 & 1  
+\end{pmatrix}
+\cdot 
+\begin{pmatrix}
+- 6\,cm \\
+6\,cm \\
+0\,cm \\
+0
+\end{pmatrix}
+=
+\begin{pmatrix}
+-7.682\,cm \\
+2.913\,cm \\
+2.121\,cm \\
+0
+\end{pmatrix}\\
+E' &= R_{123} \cdot E \\
+&= 
+\begin{pmatrix}
+0.9268 & -\sqrt{0.125} & -0.1268 & 0 \\
+0.1268 & \sqrt{0.375} &  -0.7803 & 0 \\
+\sqrt{0.125} & \sqrt{0.5} & \sqrt{0.375}  & 0 \\
+0 & 0 & 0 & 1  
+\end{pmatrix}
+\cdot 
+\begin{pmatrix}
+	0\,cm \\
+	0\,cm \\
+	40\,cm \\
+0
+\end{pmatrix}
+=
+\begin{pmatrix}
+- 5.072\,cm \\
+- 31.212\,cm \\
+24.495\,cm \\
+0
+\end{pmatrix}\\
+\end{align*}
 
 \subsubsection*{1.1.2}
 
-The location of a vertex V after the sequence of rotations $R_1, R_2 \text{ and } R_3$ using the rotation axes $M_z, M_x \text{ and } M_y$ is calculated as:
+The location of a vertex V after the sequence of rotations $R_1, R_2 \text{ and } R_3$ using the \textbf{extrinsic} rotation axes $M_z, M_x \text{ and } M_y$ is calculated as:
 
 \begin{align*}
-V' &= R_1\cdot R_2\cdot R_3\cdot V  \\
+V' &= R_3\cdot R_2\cdot R_1\cdot V = R_{321} \cdot V  \\
+R_{321} &= 
+\begin{pmatrix}
+cos\theta & 0 & sin\theta & 0 \\
+0 & 1 & 0 & 0 \\
+-sin\theta & 0 & cos\theta & 0 \\
+0 & 0 & 0 & 1 
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & cos\psi & -sin\psi & 0 \\
+0 & sin\psi & cos\psi & 0 \\
+0 & 0 & 0 & 1 
+\end{pmatrix} 
+\cdot
+\begin{pmatrix}
+cos\phi & -sin\phi & 0 & 0 \\
+sin\phi & cos\phi & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 
+\end{pmatrix}\\
+&=
+\begin{pmatrix}
+cos\theta & sin\theta \cdot sin\psi & sin\theta \cdot cos\psi& 0 \\
+0 & cos\psi & -sin\psi & 0 \\
+-sin\theta & cos\theta \cdot sin\psi & cos\theta \cdot cos\psi & 0 \\
+0 & 0 & 0 & 1 
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+cos\phi & -sin\phi & 0 & 0 \\
+sin\phi & cos\phi & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 
+\end{pmatrix}\\
+&=
+\begin{pmatrix}
+cos\theta \cdot cos\phi + sin\theta \cdot sin\psi \cdot sin\phi  & -cos\theta \cdot sin\phi + sin\theta \cdot sin\psi \cdot cos\phi & sin\theta \cdot cos\psi& 0 \\
+cos\psi \cdot sin\phi & cos\psi \cdot cos\phi & -sin\psi & 0 \\
+-sin\theta \cdot cos\phi + cos\theta \cdot sin\psi \cdot sin\phi & sin\theta \cdot sin\phi + cos\theta \cdot sin\psi \cdot cos\phi & cos\theta \cdot cos\psi & 0 \\
+0 & 0 & 0 & 1 
+\end{pmatrix}\\
+&=
+\begin{pmatrix}
+\sqrt{0.75} \cdot \sqrt{0.75} -0.5 \cdot \sqrt{0.5} \cdot 0.5  & -\sqrt{0.75} \cdot 0.5 -0.5 \cdot \sqrt{0.5} \cdot \sqrt{0.75} & -0.5 \cdot \sqrt{0.5}& 0 \\
+\sqrt{0.5} \cdot 0.5 & \sqrt{0.5} \cdot \sqrt{0.75} & -\sqrt{0.5} & 0 \\
+0.5 \cdot \sqrt{0.75} + \sqrt{0.75} \cdot \sqrt{0.5} \cdot 0.5 & -0.5 \cdot 0.5 + \sqrt{0.75} \cdot \sqrt{0.5} \cdot \sqrt{0.75} & \sqrt{0.75} \cdot \sqrt{0.5} & 0 \\
+0 & 0 & 0 & 1 
+\end{pmatrix}\\
+&=
+\begin{pmatrix}
+0.5732  & -0.7391 & -\sqrt{0.125}& 0 \\
+\sqrt{0.125} & \sqrt{0.375} & -\sqrt{0.5} & 0 \\
+0.7391 & 0.2803 & \sqrt{0.375} & 0 \\
+0 & 0 & 0 & 1 
+\end{pmatrix}
 \end{align*}
+
+Therefore the locations of the vertices after the rotation $R_{321}$ are:
+
+\begin{align*}
+A' &= R_{321} \cdot A \\
+&= 
+\begin{pmatrix}
+0.5732  & -0.7391 & -\sqrt{0.125}& 0 \\
+\sqrt{0.125} & \sqrt{0.375} & -\sqrt{0.5} & 0 \\
+0.7391 & 0.2803 & \sqrt{0.375} & 0 \\
+0 & 0 & 0 & 1 
+\end{pmatrix}
+\cdot 
+\begin{pmatrix}
+- 6\,cm \\
+- 6\,cm \\
+0\,cm \\
+0
+\end{pmatrix}
+=
+\begin{pmatrix}
+0.995\,cm \\
+-5.796\,cm \\
+-6.116\,cm \\
+0
+\end{pmatrix}\\
+B' &= R_{321} \cdot B \\
+&= 
+\begin{pmatrix}
+0.5732  & -0.7391 & -\sqrt{0.125}& 0 \\
+\sqrt{0.125} & \sqrt{0.375} & -\sqrt{0.5} & 0 \\
+0.7391 & 0.2803 & \sqrt{0.375} & 0 \\
+0 & 0 & 0 & 1 
+\end{pmatrix}
+\cdot 
+\begin{pmatrix}
+6\,cm \\
+- 6\,cm \\
+0\,cm \\
+0
+\end{pmatrix}
+=
+\begin{pmatrix}
+7.874\,cm \\
+-1.553\,cm \\
+2.753\,cm \\
+0
+\end{pmatrix}\\
+C' &= R_{321} \cdot C \\
+&= 
+\begin{pmatrix}
+0.5732  & -0.7391 & -\sqrt{0.125}& 0 \\
+\sqrt{0.125} & \sqrt{0.375} & -\sqrt{0.5} & 0 \\
+0.7391 & 0.2803 & \sqrt{0.375} & 0 \\
+0 & 0 & 0 & 1 
+\end{pmatrix}
+\cdot 
+\begin{pmatrix}
+6\,cm \\
+6\,cm \\
+0\,cm \\
+0
+\end{pmatrix}
+=
+\begin{pmatrix}
+-0.995\,cm \\
+5.796\,cm \\
+6.116\,cm \\
+0
+\end{pmatrix}\\
+D' &= R_{321} \cdot D \\
+&= 
+\begin{pmatrix}
+0.5732  & -0.7391 & -\sqrt{0.125}& 0 \\
+\sqrt{0.125} & \sqrt{0.375} & -\sqrt{0.5} & 0 \\
+0.7391 & 0.2803 & \sqrt{0.375} & 0 \\
+0 & 0 & 0 & 1 
+\end{pmatrix}
+\cdot 
+\begin{pmatrix}
+- 6\,cm \\
+6\,cm \\
+0\,cm \\
+0
+\end{pmatrix}
+=
+\begin{pmatrix}
+-7.874\,cm \\
+1.553\,cm \\
+-2.753\,cm \\
+0
+\end{pmatrix}\\
+E' &= R_{321} \cdot E \\
+&= 
+\begin{pmatrix}
+0.5732  & -0.7391 & -\sqrt{0.125}& 0 \\
+\sqrt{0.125} & \sqrt{0.375} & -\sqrt{0.5} & 0 \\
+0.7391 & 0.2803 & \sqrt{0.375} & 0 \\
+0 & 0 & 0 & 1 
+\end{pmatrix}
+\cdot 
+\begin{pmatrix}
+0\,cm \\
+0\,cm \\
+40\,cm \\
+0
+\end{pmatrix}
+=
+\begin{pmatrix}
+-14.142\,cm \\
+-28.284\,cm \\
+24.495\,cm \\
+0
+\end{pmatrix}\\
+\end{align*}
+

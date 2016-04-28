@@ -1,0 +1,130 @@
+\subsection*{Task 2.1}
+
+\subsubsection*{Task 2.1.1}
+
+We've got three homogeneous transformations each with a rotation $R_i$ around the z-Axis and a translation $a_i$.
+
+\begin{align*}
+^0A_1 &= 
+\begin{pmatrix}
+C_1 & -S_1 & 0 & C_1a_1 \\
+S_1 & C_1 & 0 & S_1a_1 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 
+\end{pmatrix},
+\,^1A_2 = 
+\begin{pmatrix}
+C_2 & -S_2 & 0 & C_2a_2 \\
+S_2 & C_2 & 0 & S_2a_2 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 
+\end{pmatrix} \\
+^2A_3 &= 
+\begin{pmatrix}
+C_3 & -S_3 & 0 & C_3a_3 \\
+S_3 & C_3 & 0 & S_3a_3 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 
+\end{pmatrix}
+=
+\begin{pmatrix}
+C(180\degree-\theta_1-\theta_2) & -S(180\degree-\theta_1-\theta_2) & 0 & C(180\degree-\theta_1-\theta_2)a_3 \\
+S(180\degree-\theta_1-\theta_2) & C(180\degree-\theta_1-\theta_2) & 0 & S(180\degree-\theta_1-\theta_2)a_3 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 
+\end{pmatrix} \\
+&\text{with } S(180\degree-\alpha) = S(\alpha), C(180\degree-\alpha) = -C(\alpha)\\
+& \text{and } C_{12} = C(\theta_1+\theta_2) = -C(180\degree-\theta_1-\theta_2) = -C_3,\\
+& S_{12} = S(\theta_1+\theta_2) = S(180\degree-\theta_1-\theta_2) = S_3\\
+&=
+\begin{pmatrix}
+-C_{12} & -S_{12} & 0 & -C_{12}a_3 \\
+S_{12} & -C_{12} & 0 & S_{12}a_3 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 
+\end{pmatrix}
+=
+\begin{pmatrix}
+-C_1C_2+S_1S_2 & -S_1C_2-C_1S_2 & 0 & (-C_1C_2+S_1S_2)a_3 \\
+S_1C_2+C_1S_2 & -C_1C_2+S_1S_2 & 0 & (S_1C_2+C_1S_2)a_3 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 
+\end{pmatrix} \\
+^0T_3 &= \,^0A_1\cdot\,^1A_2\cdot\,^2A_3 =
+\begin{pmatrix}
+C_1 & -S_1 & 0 & C_1a_1 \\
+S_1 & C_1 & 0 & S_1a_1 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 
+\end{pmatrix}\cdot
+\begin{pmatrix}
+C_2 & -S_2 & 0 & C_2a_2 \\
+S_2 & C_2 & 0 & S_2a_2 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 
+\end{pmatrix}\cdot
+\begin{pmatrix}
+-C_{12} & -S_{12} & 0 & -C_{12}a_3 \\
+S_{12} & -C_{12} & 0 & S_{12}a_3 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 
+\end{pmatrix}\\
+&= 
+\begin{pmatrix}
+C_1C_2-S_1S_2 & -C_1S_2-S_1C_2 & 0 & C_1C_2a_2-S_1S_2a_2+C_1a_1 \\
+S_1C_2+C_1S_2 & -S_1S_2+C_1C_2 & 0 & S_1C_2a_2+C_1S_2a_2+S_1a_1 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 
+\end{pmatrix}\cdot
+\begin{pmatrix}
+-C_{12} & -S_{12} & 0 & -C_{12}a_3 \\
+S_{12} & -C_{12} & 0 & S_{12}a_3 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 
+\end{pmatrix}\\
+&= 
+\begin{pmatrix}
+C_{12} & -S_{12} & 0 & C_{12}a_2+C_1a_1 \\
+S_{12} & C_{12} & 0 & S_{12}a_2+S_1a_1 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 
+\end{pmatrix}\cdot
+\begin{pmatrix}
+-C_{12} & -S_{12} & 0 & -C_{12}a_3 \\
+S_{12} & -C_{12} & 0 & S_{12}a_3 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 
+\end{pmatrix}\\
+&= 
+\begin{pmatrix}
+-C_{12}C_{12}-S_{12}S_{12} & -C_{12}S_{12}+S_{12}C_{12} & 0 & (-C_{12}C_{12}-S_{12}S_{12})a_3+C_{12}a_2+C_1a_1 \\
+-S_{12}C_{12}+C_{12}S_{12} & -S_{12}S_{12}-C_{12}C_{12} & 0 & (-S_{12}C_{12}+C_{12}S_{12})a_3+S_{12}a_2+S_1a_1 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 
+\end{pmatrix}
+\end{align*}
+Using the following equations
+\begin{align*}
+-C_{12}C_{12}-S_{12}S_{12} &= C(180\degree-(\theta_1+\theta_2))C(\theta_1+\theta_2)-S(180\degree-(\theta_1+\theta_2))S(\theta_1+\theta_2)\\
+&= C((180\degree-\theta_1-\theta_2)+\theta_1+\theta_2) = C(180\degree) = -1\\
+-C_{12}S_{12}+S_{12}C_{12} &= C(180\degree-(\theta_1+\theta_2))S(\theta_1+\theta_2)+S(180\degree-(\theta_1+\theta_2))C(\theta_1+\theta_2)\\
+&= S((180\degree-\theta_1-\theta_2)+\theta_1+\theta_2) = S(180\degree) = 0\\
+\end{align*}
+we get
+\begin{align*}
+^0T_3
+&= 
+\begin{pmatrix}
+	-1 & 0 & 0 & -a_3+C_{12}a_2+C_1a_1 \\
+	0 & -1 & 0 & S_{12}a_2+S_1a_1 \\
+	0 & 0 & 1 & 0 \\
+	0 & 0 & 0 & 1 
+\end{pmatrix}
+= 
+\begin{pmatrix}
+-1 & 0 & 0 & C_1a_1-C_3a_2-a_3 \\
+0 & -1 & 0 & S_1a_1+S_3a_2 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 
+\end{pmatrix}
+\end{align*}

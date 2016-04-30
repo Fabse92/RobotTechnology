@@ -1,2 +1,28 @@
 \subsection*{Task 2.3}
-ToDo
+
+\begin{center}
+	\begin{tabular}{ | l | l | l | l | l |}
+		\hline
+		Joint & $a_{i}$ & $\alpha_{i}$ & $D_i$ & $\theta_i$ \\ \hline
+		1 & 0 & $90\degree$ & $d_2$ & $0\degree$\\ \hline
+		2 & 0 & $-90\degree$ & $d_2$ & $0\degree$\\ \hline
+		3 & 0 & $0\degree$ & $d^*_3$ (depends on joint 3) & $0\degree$\\ \hline
+		4 & 0 & $90\degree$ & 0 & $0\degree$\\ \hline
+		5 & 0 & $-90\degree$ & 0 & $0\degree$\\ \hline
+		6 & 0 & $0\degree$ & $d_6$ & $0\degree$\\ \hline
+	\end{tabular}
+\end{center}
+
+The matrix of a total transformation of $CS_0$ to $CS_1$ in the general case is:
+
+\begin{align*}
+^{i-1}T_i &= 
+\begin{pmatrix}
+C\theta_i & -S\theta_iC\alpha_i & S\theta_iS\alpha_i & a_iC\theta_i \\
+S\theta_i & C\theta_iC\alpha_i & -C\theta_iS\alpha_i & a_iS\theta_i \\
+0 & S\alpha_i & C\alpha_i & d_i \\
+0 & 0 & 0 & 1 \\
+\end{pmatrix}
+\end{align*}
+
+Therefore we get the following homogeneous transformations:

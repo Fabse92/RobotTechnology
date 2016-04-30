@@ -14,9 +14,9 @@ The matrix of a total transformation of $CS_0$ to $CS_1$ in the general case is:
 \begin{align*}
 ^{i-1}A_i &= 
 \begin{pmatrix}
-C\theta_i & -S\theta_iC\alpha_i & S\theta_iS\alpha_i & a_iC\theta_i \\
-S\theta_i & C\theta_iC\alpha_i & -C\theta_iS\alpha_i & a_iS\theta_i \\
-0 & S\alpha_i & C\alpha_i & d_i \\
+cos(\theta_i) & -sin(\alpha_i) & sin(\theta_i)sin(\alpha_i) & a_icos(\theta_i) \\
+sin(\theta_i) & cos(\theta_i)cos(\alpha_i) & -cos(\theta_i)sin(\alpha_i) & a_isin(\theta_i) \\
+0 & sin(\alpha_i) & cos(\alpha_i) & d_i \\
 0 & 0 & 0 & 1 \\
 \end{pmatrix}
 \end{align*}
@@ -26,8 +26,8 @@ When we use the properties of sine and cosine of being antisymmetric and symmetr
 \begin{align*}
 ^{i-1}A_i &= 
 \begin{pmatrix}
-C\theta_i & S\theta_i & 0 & L_iC\theta_i \\
--S\theta_i & C\theta_i & 0 & -L_iS\theta_i \\
+cos(\theta_i) & sin(\theta_i) & 0 & L_icos(\theta_i) \\
+-sin(\theta_i) & cos(\theta_i) & 0 & -L_isin(\theta_i) \\
 0 & 0 & 1 & 0 \\
 0 & 0 & 0 & 1 \\
 \end{pmatrix}

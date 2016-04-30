@@ -3,7 +3,7 @@
 \begin{center}
 	\begin{tabular}{ | l | l | l | l | l |}
 		\hline
-		Joint & $a_{i}$ & $\alpha_{i}$ & $D_i$ & $\theta_i$ \\ \hline
+		Joint & $a_{i}$ & $\alpha_{i}$ & $d_i$ & $\theta_i$ \\ \hline
 		1 & 0 & $90\degree$ & $d_2$ & $0\degree$\\ \hline
 		2 & 0 & $-90\degree$ & $d_2$ & $0\degree$\\ \hline
 		3 & 0 & $0\degree$ & $d^*_3$ (depends on joint 3) & $0\degree$\\ \hline
@@ -16,7 +16,7 @@
 The matrix of a total transformation of $CS_0$ to $CS_1$ in the general case is:
 
 \begin{align*}
-^{i-1}T_i &= 
+^{i-1}A_i &= 
 \begin{pmatrix}
 C\theta_i & -S\theta_iC\alpha_i & S\theta_iS\alpha_i & a_iC\theta_i \\
 S\theta_i & C\theta_iC\alpha_i & -C\theta_iS\alpha_i & a_iS\theta_i \\

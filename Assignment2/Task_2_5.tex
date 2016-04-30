@@ -1,5 +1,5 @@
 \subsection*{Task 2.5}
-The DH-Parameters for the "Adept One" SCARA manipulator are:
+The DH-parameters for the "Adept One" SCARA manipulator are:
 \begin{center}
 	\begin{tabular}{ | l | l | l | l | l |}
 		\hline
@@ -25,7 +25,7 @@ sin(\theta_i) & cos(\theta_i)cos(\alpha_i) & -cos(\theta_i)sin(\alpha_i) & a_isi
 \end{pmatrix}
 \end{align*}
 
-Therefore we obtain the following homogeneous transformations:
+Using the DH-parameters we obtain the following homogeneous transformations:
 
 \begin{align*}
 ^0A_1 &= 
@@ -37,5 +37,91 @@ sin(q_1) & -cos(q_1) & 0 & sin(q_1)425mm \\
 \end{pmatrix}
 \end{align*}
 
+\begin{align*}
+^1A_2 &= 
+\begin{pmatrix}
+cos(q_2) & 0 & 0 & cos(q_2)375mm \\
+sin(q_2) & cos(q_2) & 0 & sin(q_2)375mm \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+\end{pmatrix}
+\end{align*}
 
+\begin{align*}
+^2A_3 &= 
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & d_3 \\
+0 & 0 & 0 & 1 \\
+\end{pmatrix}
+\end{align*}
+
+\begin{align*}
+^3A_4 &= 
+\begin{pmatrix}
+cos(q_4) & 0 & 0 & 0 \\
+sin(q_4) & cos(q_4) & 0 & 0 \\
+0 & 0 & 1 & 200mm \\
+0 & 0 & 0 & 1 \\
+\end{pmatrix}
+\end{align*}
+
+and therefore:
+
+{\scriptsize
+\begin{flalign*}
+^0T_4 &= \,^0A_1\cdot \,^1A_2\cdot \,^2A_3\cdot \,^3A_4 &\\ 
+ &=
+\begin{pmatrix}
+cos(q_1) & 0 & 0 & cos(q_1)425mm \\
+sin(q_1) & -cos(q_1) & 0 & sin(q_1)425mm \\
+0 & 0 & -1 & 877mm \\
+0 & 0 & 0 & 1 \\
+\end{pmatrix}\cdot
+\begin{pmatrix}
+cos(q_2) & 0 & 0 & cos(q_2)375mm \\
+sin(q_2) & cos(q_2) & 0 & sin(q_2)375mm \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+\end{pmatrix}
+\cdot \,^2A_3\cdot \,^3A_4\\
+ &=
+\begin{pmatrix}
+cos(q_1)\cdot cos(q_2) & 0 & 0 & cos(q_1)cos(q_2)375mm+cos(q_1)425mm \\
+sin(q_1)\cdot cos(q_2) -cos(q_1)\cdot sin(q_2) & -cos(q_1)\cdot cos(q_2) & 0 & sin(q_1)\cdot cos(q_2)375mm-cos(q_1) \cdot sin(q_2)375mm +sin(q_1)425mm \\
+0 & 0 & -1 & 877mm \\
+0 & 0 & 0 & 1 \\
+\end{pmatrix}\\
+&\cdot
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & d_3 \\
+0 & 0 & 0 & 1 \\
+\end{pmatrix}
+\cdot \,^3A_4\\
+&=
+\begin{pmatrix}
+cos(q_1)\cdot cos(q_2) & 0 & 0 & cos(q_1)cos(q_2)375mm+cos(q_1)425mm \\
+sin(q_1)\cdot cos(q_2) -cos(q_1)\cdot sin(q_2) & -cos(q_1)\cdot cos(q_2) & 0 & sin(q_1)\cdot cos(q_2)375mm-cos(q_1) \cdot sin(q_2)375mm +sin(q_1)425mm \\
+0 & 0 & -1 & 877mm-d_3 \\
+0 & 0 & 0 & 1 \\
+\end{pmatrix}\\
+&\cdot
+\begin{pmatrix}
+cos(q_4) & 0 & 0 & 0 \\
+sin(q_4) & cos(q_4) & 0 & 0 \\
+0 & 0 & 1 & 200mm \\
+0 & 0 & 0 & 1 \\
+\end{pmatrix}\\
+&=
+\begin{pmatrix}
+c(q_1)c(q_2)c(q_4) & 0 & 0 & c(q_1)c(q_2)375mm+c(q_1)425mm \\
+s(q_1)c(q_2)c(q_4) -c(q_1)s(q_2)c(q_4)-c(q_1)c(q_2)s(q_4) & -c(q_1)c(q_2)c(q_4) & 0 & s(q_1)c(q_2)375mm-c(q_1)s(q_2)375mm+s(q_1)425mm \\
+0 & 0 & -1 & 677mm-d_3 \\
+0 & 0 & 0 & 1 \\
+\end{pmatrix}\\
+\end{flalign*}
+}
 \subsubsection*{Task 2.5.3}

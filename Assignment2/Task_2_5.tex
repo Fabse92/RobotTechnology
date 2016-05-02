@@ -11,7 +11,19 @@ The DH-parameters for the "Adept One" SCARA manipulator are:
 	\end{tabular}
 \end{center}
 \subsubsection*{Task 2.5.1}
-ToDo
+Ich bin mir nicht so sicher, was wir machen sollen.
+\begin{center}
+	\begin{tabular}{ | l | l | l | l | l |}
+		\hline
+		Joint & $a_{i}$ & $\alpha_{i}$ & $d_i$ & $\theta_i$ \\ \hline
+		1 & $a_1$ & $\pi = 180\degree$ & 0/$d_1=877$mm & $q_1$\\ \hline
+		2 & $a_2$ & $0$ & 0/$d_2=0$mm & $q_2$\\ \hline
+		3 & 0 & $0$ & 0/$d_3$ & $0$\\ \hline
+		4 & 0 & $0$ & 0/$d_4=200$mm & $q_4$\\ \hline
+	\end{tabular}
+\end{center}
+As all z-axes are parallel the DH-Convention is ambiguous for $d_i$.
+So we can choose $d_i = 0$ everywhere but can also choose the according values. We tried to indicate this by writing 0/$d_i=value$.
 \subsubsection*{Task 2.5.2}
 The matrix of a total transformation of $CS_0$ to $CS_1$ in the general case is:
 
@@ -125,3 +137,16 @@ s(q_1)c(q_2)c(q_4) -c(q_1)s(q_2)c(q_4)-c(q_1)c(q_2)s(q_4) & -c(q_1)c(q_2)c(q_4) 
 \end{flalign*}
 }
 \subsubsection*{Task 2.5.3}
+We use the matrix derived in task 2.5.2 and set the values accordingly to the given vector:
+$\begin{pmatrix}
+\pi /4 & -\pi /3 & 120 & \pi /2
+\end{pmatrix}^T $
+
+{\scriptsize
+\begin{pmatrix}
+c(q_1)c(q_2)c(q_4) & 0 & 0 & c(q_1)c(q_2)375mm+c(q_1)425mm \\
+s(q_1)c(q_2)c(q_4) -c(q_1)s(q_2)c(q_4)-c(q_1)c(q_2)s(q_4) & -c(q_1)c(q_2)c(q_4) & 0 & s(q_1)c(q_2)375mm-c(q_1)s(q_2)375mm+s(q_1)425mm \\
+0 & 0 & -1 & 677mm-d_3 \\
+0 & 0 & 0 & 1 \\
+\end{pmatrix}\\
+}

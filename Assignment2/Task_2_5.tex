@@ -23,7 +23,7 @@ Ich bin mir nicht so sicher, was wir machen sollen.
 	\end{tabular}
 \end{center}
 As all z-axes are parallel the DH-Convention is ambiguous for $d_i$.
-So we can choose $d_i = 0$ everywhere but can also choose the according values. We tried to indicate this by writing 0/$d_i=value$.
+So we can choose $d_i = 0$ everywhere but can also choose the according values. We tried to indicate this by writing 0/$d_i=value$. The value for $a_1 = 180\degree$ is a bit unusual but follows the DH-Convention as it still aligns the z-axis accordingly to rotation of the joint.
 \subsubsection*{Task 2.5.2}
 The matrix of a total transformation of $CS_0$ to $CS_1$ in the general case is:
 
@@ -137,7 +137,7 @@ s(q_1)c(q_2)c(q_4) -c(q_1)s(q_2)c(q_4)-c(q_1)c(q_2)s(q_4) & -c(q_1)c(q_2)c(q_4) 
 \end{flalign*}
 }
 \subsubsection*{Task 2.5.3}
-We use the matrix derived in task 2.5.2 and set the values accordingly to the given vector:
+We use the matrix derived in task 2.5.2 assume our base coordinate system to be the eigenmatrix and set the values accordingly to the given vector:
 $\begin{pmatrix}
 \pi /4 & -\pi /3 & 120 & \pi /2
 \end{pmatrix}^T $
@@ -160,6 +160,13 @@ $\begin{pmatrix}
 0 & 0 & -1 & 557mm\\
 0 & 0 & 0 & 1\\
 \end{pmatrix}$
+For the zero values (inital TCP position) we get:
+$\begin{pmatrix}
+0 & 0 & 0 & 800mm \\
+-1 & 0 & 0 & 0mm \\
+0 & 0 & -1 & 577mm\\
+0 & 0 & 0 & 1\\
+\end{pmatrix}$
 \begin{comment}
 $=
 \begin{pmatrix}
@@ -170,4 +177,4 @@ $=
 \end{pmatrix}$
 \end{comment}
 \\
-Vergess ich hier noch irgendwas? Muss man das noch mit etwas Multiplizieren?
+%Vergess ich hier noch irgendwas? Muss man das noch mit etwas Multiplizieren?

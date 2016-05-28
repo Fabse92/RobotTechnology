@@ -1,1 +1,33 @@
 \subsection*{Task 3.3}
+Following transformations are given:
+\begin{align*}
+^{camera}T_{object} &= 
+\begin{pmatrix}
+0 & -1 & 0 & 0\\
+-1 & 0 & 0 & -5\\
+0 & 0 & -1 & 19\\
+0 & 0 & 0 & 1
+\end{pmatrix},
+^{camera}T_{base} = 
+\begin{pmatrix}
+0 & -1 & 0 & 15\\
+-1 & 0 & 0 & 25\\
+0 & 0 & -1 & 20\\
+0 & 0 & 0 & 1
+\end{pmatrix}
+\end{align*}
+\subsubsection*{Task 3.3.1}
+To calculate the transformation $^{base}T_{object}$ we need the inverse of $^{camera}T_{base}$ because:\\
+$^{base}T_{object} =\,^{camera}T_{base}^{-1} \cdot\,^{camera}T_{object} =\,^{base}T_{camera} \cdot\,^{camera}T_{object}$
+The inverse of a matrix can be calculated with the Gauß-Jordan-Algorithm:
+\begin{align*}
+(^{camera}T_{base}|I) &= 
+\left(
+\begin{array}{cccc|cccc}
+0 & -1 & 0 & 15 & 1 & 0 & 0 & 0\\
+-1 & 0 & 0 & 25 & 0 & 1 & 0 & 0\\
+0 & 0 & -1 & 20 & 0 & 0 & 1 & 0\\
+0 & 0 & 0  & 1   & 0 & 0 & 0 & 1
+\end{array}
+\right),
+\end{align*}

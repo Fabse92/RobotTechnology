@@ -1,2 +1,58 @@
 \subsection*{Task 3.1}
 
+The time-dependent homogeneous transformation can be described as a rotation around the z-axis compound with a translation against the z-axis.
+Rotation and translation are both time dependent.
+\begin{align*}
+T(t) &= 
+\begin{pmatrix}
+n_1(t) & o_1(t) & a_1(t) & d_1(t)\\
+n_2(t) & o_2(t) & a_2(t) & d_2(t)\\
+n_3(t) & o_3(t) & a_3(t) & d_3(t)\\
+0 & 0 & 0 & 1
+\end{pmatrix}
+= R_{z,\phi}(t) + T_z(t)\\
+&=
+\begin{pmatrix}
+C\phi & -S\phi & 0 & 0\\
+S\phi & C\phi & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 1
+\end{pmatrix}
++
+\begin{pmatrix}
+1 & 0 & 0 & d_1^*\\
+0 & 1 & 0 & d_2^*\\
+0 & 0 & 1 & d_3^* + \frac{h}{rotations(t)} \\
+0 & 0 & 0 & 1
+\end{pmatrix}
+=
+\begin{pmatrix}
+C\phi & -S\phi & 0 & d_1^*\\
+S\phi & C\phi & 0 & d_2^*\\
+0 & 0 & 1 & d_3^* + \frac{h}{rotations(t)} \\
+0 & 0 & 0 & 1
+\end{pmatrix}
+\end{align*}
+
+Where $d_i^*$ are the translation parameters for the homogeneous transformation to the manipulator in zero position (screw cap no opened).
+Let $t_r$ be the time the manipulator takes for one full rotation around the z-axis.
+We have a given constant angular velocity: $\omega_z = \frac{2\pi}{t_r}$. 
+Therefore we get $t_r = \frac{2\pi}{\omega_z}$ and for the number of rotations performed at time t: $rotations(t) = \frac{t}{t_r} = t\cdot\frac{\omega_z}{2\pi}$.
+The total angle the gripper has been rotated at time t can then be calculated as: $\phi = rotations(t) \cdot 2\pi = t\cdot\omega_z$.
+
+\begin{align*}
+T(t) &= 
+\begin{pmatrix}
+C\phi & -S\phi & 0 & d_1^*\\
+S\phi & C\phi & 0 & d_2^*\\
+0 & 0 & 1 & d_3^* + \frac{h}{rotations(t)} \\
+0 & 0 & 0 & 1
+\end{pmatrix}
+=
+\begin{pmatrix}
+C(t\cdot\omega_z) & -S(t\cdot\omega_z) & 0 & d_1^*\\
+S(t\cdot\omega_z) & C(t\cdot\omega_z) & 0 & d_2^*\\
+0 & 0 & 1 & d_3^* + \frac{h}{t\cdot\frac{\omega_z}{2\pi}} \\
+0 & 0 & 0 & 1
+\end{pmatrix}
+\end{align*}

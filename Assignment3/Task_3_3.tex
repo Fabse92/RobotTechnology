@@ -29,5 +29,57 @@ The inverse of a matrix can be calculated with the Gauß-Jordan-Algorithm:
 0 & 0 & -1 & 20 & 0 & 0 & 1 & 0\\
 0 & 0 & 0  & 1   & 0 & 0 & 0 & 1
 \end{array}
-\right),
+\right)
+\rightarrow 
+\left(
+\begin{array}{cccc|cccc}
+-1 & 0 & 0 & 25 & 0 & 1 & 0 & 0\\
+0 & -1 & 0 & 15 & 1 & 0 & 0 & 0\\
+0 & 0 & -1 & 20 & 0 & 0 & 1 & 0\\
+0 & 0 & 0  & 1   & 0 & 0 & 0 & 1
+\end{array}
+\right)\\
+&\rightarrow 
+\left(
+\begin{array}{cccc|cccc}
+1 & 0 & 0 & 0 & 0 & -1 & 0 & 25\\
+0 & 1 & 0 & 0 & -1 & 0 & 0 & 15\\
+0 & 0 & 1 & 0 & 0 & 0 & -1 & 20\\
+0 & 0 & 0  & 1 & 0 & 0 & 0 & 1
+\end{array}
+\right)
+=(^{camera}T_{base}^{-1}|I) 
+\\
+^{base}T_{camera} &=
+\begin{pmatrix}
+0 & -1 & 0 & 25\\
+-1 & 0 & 0 & 15\\
+0 & 0 & -1 & 20\\
+0 & 0 & 0 & 1
+\end{pmatrix}
+\\
+^{base}T_{object} &=
+\begin{pmatrix}
+0 & -1 & 0 & 25\\
+-1 & 0 & 0 & 15\\
+0 & 0 & -1 & 20\\
+0 & 0 & 0 & 1
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+0 & -1 & 0 & 0\\
+-1 & 0 & 0 & -5\\
+0 & 0 & -1 & 19\\
+0 & 0 & 0 & 1
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 & 0 & 0 & 30\\
+0 & 1 & 0 & 15\\
+0 & 0 & 1 & 1\\
+0 & 0 & 0 & 1
+\end{pmatrix}
 \end{align*}
+
+\subsubsection*{Task 3.3.2}
+von base zu Tool wird eine Drehung um die x-Achse um 180 und eine um die z-Achse um 90 durchgeführt. Die Translation entspricht der von base zu object

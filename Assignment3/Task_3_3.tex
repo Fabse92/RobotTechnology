@@ -48,7 +48,7 @@ The inverse of a matrix can be calculated with the Gauß-Jordan-Algorithm:
 0 & 0 & 0  & 1 & 0 & 0 & 0 & 1
 \end{array}
 \right)
-=(^{camera}T_{base}^{-1}|I) 
+=(I|^{camera}T_{base}^{-1}) 
 \\
 ^{base}T_{camera} &=
 \begin{pmatrix}
@@ -82,4 +82,21 @@ The inverse of a matrix can be calculated with the Gauß-Jordan-Algorithm:
 \end{align*}
 
 \subsubsection*{Task 3.3.2}
-von base zu Tool wird eine Drehung um die x-Achse um 180 und eine um die z-Achse um 90 durchgeführt. Die Translation entspricht der von base zu object
+In respect to the base the manipulator is rotated $-90\degree$ around the z-axis and $180\degree$ around the x-axis, which is the same rotation as for the transformation from base to camera.
+The translation from base to manipulator during the grasp corresponds to the translation from $^{base}T_{object}$, because their origins coincide.
+Therefore we get for $^{base}T_{tool}$:
+\begin{align*}
+^{base}T_{tool} &=
+\begin{pmatrix}
+0 & -1 & 0 & 30\\
+-1 & 0 & 0 & 15\\
+0 & 0 & -1 & 1\\
+0 & 0 & 0 & 1
+\end{pmatrix}
+\end{align*}
+
+\subsubsection*{Task 3.3.3}
+
+
+
+

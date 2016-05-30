@@ -1,1 +1,4 @@
 \subsection*{Task 3.4}
+The positioning accuracy especially depends on differences between the specified model and the actual robot. Deviations in the joint-offset and link length will propagate from the description via URDF to the derived homogeneous transformation matrices and create a discrepancy between the calculated TCP and the actual TCP. The effect on the positioning accuracy is then dependent on joint configuration. An additional factor can be inaccuracy of joint movement from the slackness of the joints. Such inaccuracy can be influenced by age of the robot and maybe even load.
+
+The limit of the positioning accuracy will be determined by the repeatability. As the repeatability describes the distance between repeated movements targeting the same position, the positioning accuracy can in average only reach the same distance towards a target position.

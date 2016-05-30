@@ -93,10 +93,38 @@ Therefore we get for $^{base}T_{tool}$:
 0 & 0 & -1 & 1\\
 0 & 0 & 0 & 1
 \end{pmatrix}
+=
+\begin{pmatrix}
+n_x & s_x & a_x & p_x\\
+n_y & s_y & a_y & p_y\\
+n_z & s_z & a_z & p_z\\
+0 & 0 & 0 & 1
+\end{pmatrix}
 \end{align*}
 
 \subsubsection*{Task 3.3.3}
+The equations to calculate the joint angles can be retrieved from the given material about PUMA roboter arms.
 
+\begin{align*}
+\theta_1 &=atan2\left[\frac{-ARM\cdot p_y\sqrt{p_x^2+p_y^2-d_2^2}-p_xd_2}{-ARM\cdot p_x\sqrt{p_x^2+p_y^2-d_2^2}+p_yd_2}\right]\\
+\theta_2 &=atan2\left[\frac{sin\alpha\cos\beta+(ARM\cdot ELBOW)cos\alpha sin\beta}{cos\alpha\cos\beta-(ARM\cdot ELBOW)sin\alpha sin\beta}\right]\\
+\text{mit } sin\alpha &= -\frac{p_z}{\sqrt{p_x^2+p_y^2+p_z^2-d_2^2}}, cos\alpha = -\frac{ARM\cdot \sqrt{p_x^2+p_y^2-d_2^2}}{\sqrt{p_x^2+p_y^2+p_z^2-d_2^2}}\\
+\text{und } cos\beta &= -\frac{p_x^2+p_y^2+p_z^2+a_2^2-d_2^2-(d_4^2+a_3^2)}{2a_2\sqrt{p_x^2+p_y^2+p_z^2-d_2^2}}, sin\beta = \sqrt{1-cos^2\beta}\\
+\theta_3 &=atan2\left[\frac{sin\phi cos\beta-cos\phi sin\beta}{cos\phi cos\beta+sin\phi sin\beta}\right]\\
+\text{mit } cos\phi &= \frac{a_2^2+(d_4^2+a_3^2)-(p_x^2+p_y^2+p_z^2-d_2^2)}{2a_2\sqrt{d_4^2+a_3^2}}, sin\phi = ARM\cdot ELBOW\sqrt{1-cos^2\phi}\\
+\text{und } sin\beta &= \frac{d_4}{\sqrt{d_4^2+a_3^2}}, cos\beta = \frac{|a_3|}{\sqrt{d_4^2+a_3^2}}
+\end{align*}
 
+Using the DH-parameters for the PUMA 560 from lecture 1 we have for the non-zero parameters:
+\begin{align*}
+a_2 &= 431.8mm, a_3=-20.32mm, d_3=149.09mm, d_4=433.07mm
+\end{align*}
 
+With $\theta_1$, $\theta_2$ and $\theta_3$ we can calculate $A_0^1$, $A_1^2$ and $A_2^3$ and then the last three angles:
+
+\begin{align*}
+\theta_4 &=atan2\left[\frac{WRIST\cdot sign(\Omega)\cdot(C_1a_y-S_1a_x)}{WRIST\cdot sign(\Omega)\cdot(C_1C_{23}a_x+S_1C_{23}a_y-S_{23}a_z)}\right]\\
+\theta_5 &=atan2\left[\frac{(C_1C_{23}C_4-S_1S_4)a_x+(S_1C_{23}C_4+C_1S_4)a_y-C_4S_{23}a_z}{C_1S_{23}a_x+S_1S_{23}a_y+C_{23}a_z}\right]\\
+\theta_6 &=atan2\left[\frac{(-S_1C_4-C_1C_{23}S_4)n_x+(C_1C_4-S_1C_{23}S_4)n_y+(S_4S_{23})n_z}{(-S_1C_4-C_1C_{23}S_4)s_z+(C_1C_4-S_1C_{23}S_4)s_y+(S_4S_{23})s_z}\right]
+\end{align*}
 

@@ -1,1 +1,70 @@
 \subsection*{Task 3.2}
+
+\subsubsection*{Task 3.2.1}
+The DH-Parameters for the given manipulator are:
+\begin{center}
+	\begin{tabular}{ | l | l | l | l | l |}
+		\hline
+		Joint & $a_{i}$ & $\alpha_{i}$ & $d_i$ & $\theta_i$ \\ \hline
+		1 & 0 & $-90\degree$ & ? & $\theta_1$\\ \hline
+		2 & $l_a$ & $0\degree$ & 0 or $l_b$ & $\theta_2$\\ \hline
+		3 & 0 & $90\degree$ & $l_c$ & $\theta_3$\\ \hline
+	\end{tabular}
+\end{center}
+
+\subsubsection*{Task 3.2.2}
+The matrix of a total transformation of $CS_{i-1}$ to $CS_i$ in the general case is:
+
+\begin{align*}
+^{i-1}A_i &= 
+\begin{pmatrix}
+cos(\theta_i) & -sin(\alpha_i)cos(\alpha_i) & sin(\theta_i)sin(\alpha_i) & a_icos(\theta_i) \\
+sin(\theta_i) & cos(\theta_i)cos(\alpha_i) & -cos(\theta_i)sin(\alpha_i) & a_isin(\theta_i) \\
+0 & sin(\alpha_i) & cos(\alpha_i) & d_i \\
+0 & 0 & 0 & 1 \\
+\end{pmatrix}
+\end{align*}
+
+\begin{align*}
+^{0}A_1 &= 
+\begin{pmatrix}
+cos(\theta_1) & 0 & -sin(\theta_1) & 0 \\
+sin(\theta_1) & 0 & cos(\theta_1) & 0 \\
+0 & -1 & 0 & d_1 \\
+0 & 0 & 0 & 1 \\
+\end{pmatrix}
+\end{align*}
+
+\begin{align*}
+^{1}A_2 &= 
+\begin{pmatrix}
+cos(\theta_2) & 0 & 0 & l_acos(\theta_2) \\
+sin(\theta_2) & cos(\theta_2) & 0 & l_asin(\theta_2) \\
+0 & 0 & 1 & l_b \\
+0 & 0 & 0 & 1 \\
+\end{pmatrix}
+\end{align*}
+
+\begin{align*}
+^{2}A_3 &= 
+\begin{pmatrix}
+cos(\theta_3) & 0 & sin(\theta_3) & 0 \\
+sin(\theta_3) & 0 & -cos(\theta_3) & 0 \\
+0 & 1 & 0 & l_c \\
+0 & 0 & 0 & 1 \\
+\end{pmatrix}
+\end{align*}
+
+$T_3 = ^{0}A_1 ^{1}A_2 ^{2}A_3$
+
+{\scriptsize
+\begin{align*}
+&= 
+\begin{pmatrix}
+cos(\theta_1)cos(\theta_2)cos(\theta_3) & -sin(\theta_3) & cos(\theta_1)cos(\theta_2)sin(\theta_3) & -sin(\theta_1)l_c+l_acos(\theta_1)cos(\theta_2)-sin(\theta_1)l_b \\
+sin(\theta_1)cos(\theta_2)cos(\theta_3) & cos(\theta_1) & sin(\theta_1)cos(\theta_2)sin(\theta_3) & cos(\theta_1)l_c+l_asin(\theta_1)cos(\theta_2)+cos(\theta_1)l_b \\
+-sin(\theta_2)cos(\theta_3)-cos(\theta_2)sin(\theta_3) & 0 & -sin(\theta_2)sin(\theta_3)+cos(\theta_2)cos(\theta_3) & -l_acos(\theta_2)+d_1 \\
+0 & 0 & 0 & 1 \\
+\end{pmatrix}
+\end{align*}
+}

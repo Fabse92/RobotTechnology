@@ -1,2 +1,183 @@
 \subsection*{Task 4.1}
 
+The Jacobian is calculated as:
+
+\begin{align*}
+	J &= 
+	\begin{pmatrix}
+		J_v\\
+		J_w
+	\end{pmatrix}
+	= 
+	\begin{pmatrix}
+		J_{v_1} & J_{v_2} & J_{v_3}\\
+		J_{w_1}&J_{w_2}&J_{w_3}
+	\end{pmatrix}\\
+	J_{v_i} &=
+	\begin{cases}
+	 z_{i-1} & \text{if i is prismatic} \\
+	 z_{i-1}\times (o_n^0-o_{i-1}^0) & \text{if i is revolute}
+	\end{cases}\\
+	J_{w_i} &=
+	\begin{cases}
+	0 & \text{if i is prismatic} \\
+	z_{i-1} & \text{if i is revolute}
+	\end{cases}
+\end{align*}
+
+To determine the $z_i$ and $o_i$, we have to find all $^0T_i$.
+Therefore we calculate the DH-parameters:
+
+\begin{center}
+	\begin{tabular}{ | l | l | l | l | l |}
+		\hline
+		Joint & $a_{i}$ & $\alpha_{i}$ & $d_i$ & $\theta_i$ \\ \hline
+		1 & $l_1$ & 0 & 0 & $\theta_1$ \\ \hline
+		2 & $l_2$ & 0 & 0 & $\theta_2$ \\ \hline
+		3 & $l_3$ & 0 & 0 & $\theta_3$ \\ \hline
+	\end{tabular}
+\end{center}
+
+Therefore we obtain:
+
+\begin{align*}
+^0T_1 &= 
+\begin{pmatrix}
+C1 & -S1 & 0 & l_1 C1\\
+S1 &  C1 & 0 & l_1 S1\\
+0  &  0  & 1 & 0\\
+0  &  0  & 0 & 1
+\end{pmatrix},
+\,^1T_2 = 
+\begin{pmatrix}
+C2 & -S2 & 0 & l_2 C2\\
+S2 &  C2 & 0 & l_2 S2\\
+0  &  0  & 1 & 0\\
+0  &  0  & 0 & 1
+\end{pmatrix},
+\,^2T_3 = 
+\begin{pmatrix}
+C3 & -S3 & 0 & l_3 C3\\
+S3 &  C3 & 0 & l_3 S3\\
+0  &  0  & 1 & 0\\
+0  &  0  & 0 & 1
+\end{pmatrix}\\
+^0T_2 &= 
+\begin{pmatrix}
+C1C2-S1S2 & -C1S2-S1C2 & 0 & C1l_2C2-S1l_2S2+l_1C1\\
+S1C2+C1S2 & -S1S2+C1C2 & 0 & S1l_2C2+C1l_2S2+l_1S1\\
+0  &  0  & 1 & 0\\
+0  &  0  & 0 & 1
+\end{pmatrix}
+\end{align*}
+
+{\tiny
+	\begin{flalign*}
+	\hspace*{-3cm}
+^0T_3 &= 
+\begin{pmatrix}
+C1C2C3-S1S2C3-C1S2S3-S1C2S3 & -C1C2S3+S1S2S3-C1S2C3-S1C2C3 & 0 & (C1C2-S1S2)l_3 C3-(C1S2+S1C2)l_3 S3+C1l_2C2-S1l_2S2+l_1C1\\
+S1C2C3+C1S2C3-S1S2S3+C1C2S3 & -S1C2S3-C1S2S3-S1S2C3+C1C2C3 & 0 & (S1C2+C1S2)l_3 C3-(S1S2-C1C2)l_3 S3+S1l_2C2+C1l_2S2+l_1S1\\
+0  &  0  & 1 & 0\\
+0  &  0  & 0 & 1
+\end{pmatrix}
+	\end{flalign*}
+}
+
+The $z_i$ and $o_i$ are then:
+
+\begin{align*}
+z_1 &= 
+\begin{pmatrix}
+0 \\ 0 \\ 1
+\end{pmatrix},
+z_2 = 
+\begin{pmatrix}
+0 \\ 0 \\ 1
+\end{pmatrix},
+z_3 = 
+\begin{pmatrix}
+0 \\ 0 \\ 1
+\end{pmatrix}\\
+o_1^0 &= 
+\begin{pmatrix}
+l_1C1 \\ l_1S1 \\ 0
+\end{pmatrix},
+o_2^0 = 
+\begin{pmatrix}
+C1l_2C2-S1l_2S2+l_1C1 \\ S1l_2C2+C1l_2S2+l_1S1 \\ 0
+\end{pmatrix}\\
+o_3^0 &= 
+\begin{pmatrix}
+(C1C2-S1S2)l_3 C3-(C1S2+S1C2)l_3 S3+C1l_2C2-S1l_2S2+l_1C1 \\ (S1C2+C1S2)l_3 C3-(S1S2-C1C2)l_3 S3+S1l_2C2+C1l_2S2+l_1S1 \\ 0
+\end{pmatrix}
+\end{align*}
+
+As all joints are revolute, we get for the elements of the Jacobian:
+
+\begin{align*}
+J_{v_1} &= 
+z_1\times (o_3^0-o_1^0)\\
+ &=
+\begin{pmatrix}
+0 \\ 0 \\ 1
+\end{pmatrix}\times\left(
+\begin{pmatrix}
+(C1C2-S1S2)l_3 C3-(C1S2+S1C2)l_3 S3+C1l_2C2-S1l_2S2+l_1C1 \\ (S1C2+C1S2)l_3 C3-(S1S2-C1C2)l_3 S3+S1l_2C2+C1l_2S2+l_1S1 \\ 0
+\end{pmatrix}-
+\begin{pmatrix}
+l_1C1 \\ l_1S1 \\ 0
+\end{pmatrix}
+\right)\\
+&=
+\begin{pmatrix}
+0 \\ 0 \\ 1
+\end{pmatrix}\times
+\begin{pmatrix}
+(C1C2-S1S2)l_3 C3-(C1S2+S1C2)l_3 S3+C1l_2C2-S1l_2S2 \\ (S1C2+C1S2)l_3 C3-(S1S2-C1C2)l_3 S3+S1l_2C2+C1l_2S2 \\ 0
+\end{pmatrix}
+\\
+&=
+\begin{pmatrix}
+-((S1C2+C1S2)l_3 C3-(S1S2-C1C2)l_3 S3+S1l_2C2+C1l_2S2) \\ (C1C2-S1S2)l_3 C3-(C1S2+S1C2)l_3 S3+C1l_2C2-S1l_2S2 \\ 0
+\end{pmatrix}\\
+J_{v_2} &= 
+z_2\times (o_3^0-o_2^0)\\
+&=
+\begin{pmatrix}
+0 \\ 0 \\ 1
+\end{pmatrix}\times
+\begin{pmatrix}
+(C1C2-S1S2)l_3 C3-(C1S2+S1C2)l_3 S3 \\ (S1C2+C1S2)l_3 C3-(S1S2-C1C2)l_3 S3 \\ 0
+\end{pmatrix}\\
+&=
+\begin{pmatrix}
+-((S1C2+C1S2)l_3 C3-(S1S2-C1C2)l_3 S3) \\ (C1C2-S1S2)l_3 C3-(C1S2+S1C2)l_3 S3 \\ 0
+\end{pmatrix}\\
+J_{v_3} &= 
+z_2\times (o_3^0-o_3^0)
+=
+\begin{pmatrix}
+0 \\ 0 \\ 0
+\end{pmatrix}\\
+J_{w_1} &= J_{w_2} = J_{w_3} = 
+\begin{pmatrix}
+0 \\ 0 \\ 1
+\end{pmatrix}
+\end{align*}
+
+The Jacobian is then:
+
+{\scriptsize
+\begin{flalign*}
+J &=
+\begin{pmatrix}
+(C1C2-S1S2)l_3 C3-(C1S2+S1C2)l_3 S3+C1l_2C2-S1l_2S2 & -((S1C2+C1S2)l_3 C3-(S1S2-C1C2)l_3 S3) & 0 \\
+(S1C2+C1S2)l_3 C3-(S1S2-C1C2)l_3 S3+S1l_2C2+C1l_2S2 & (C1C2-S1S2)l_3 C3-(C1S2+S1C2)l_3 S3 &  0 \\
+0 & 0 & 0 \\
+0 & 0 & 0 \\
+0 & 0 & 0 \\
+1 & 1 & 1
+\end{pmatrix}	
+\end{flalign*}
+}

@@ -1,1 +1,98 @@
 \subsection*{Task 4.4}
+
+To derive the homogeneous transformation $Rot_{\textbf{k},\theta}$ we consider it's effect on a vector $\textbf{v}=(v_x,v_y,v_z)^T$.
+\textbf{v} can be separated in an orthogonal $\textbf{v}_o$ and a parallel part $\textbf{v}_p$ in respect to $\textbf{k}=(k_x,k_y,k_z)$ so $\textbf{v} = \textbf{v}_o+\textbf{v}_p$.
+\textbf{k} lays in the origin of our coordinate system therefore $Rot_{\textbf{k},\theta}(\textbf{v}) = \textbf{v}_p+Rot_{\textbf{k},\theta}(\textbf{v}_o)$, the rotation on the parallel part of $\textbf{v}$ has no effect.
+The orthogonal part of $\textbf{v}$ is then rotated about $\theta$ around $\textbf{k}$ in the the plane spanned by $\textbf{v}_o$ and $\textbf{k}\times\textbf{v}_o$.
+Which translates to: $Rot_{\textbf{k},\theta}(\textbf{v}_o) = cos\theta\cdot\textbf{v}_o+sin\theta\cdot\textbf{k}\times\textbf{v}_o= cos\theta\cdot\textbf{v}_o+sin\theta\cdot\textbf{k}\times\textbf{v}$ (here we assume \textbf{k} to be normalized). $\textbf{v}_p$ can be written as $\textbf{v}_p = (\textbf{v}\cdot\textbf{k})\textbf{k}$.
+
+The effect of the rotation around \textbf{k} is then: 
+
+\begin{align*}
+Rot_{\textbf{k},\theta}(\textbf{v}) &= (\textbf{v}\cdot\textbf{k})\textbf{k}+cos\theta\cdot\textbf{v}_o+sin\theta\cdot\textbf{k}\times\textbf{v}\\
+&= (\textbf{v}\cdot\textbf{k})\textbf{k}+cos\theta\cdot(\textbf{v}-(\textbf{v}\cdot\textbf{k})\textbf{k})+sin\theta\cdot\textbf{k}\times\textbf{v}\\
+&= (\textbf{v}\cdot\textbf{k})\textbf{k}+cos\theta\cdot\textbf{v}-cos\theta\cdot(\textbf{v}\cdot\textbf{k})\textbf{k}+sin\theta\cdot\textbf{k}\times\textbf{v}\\
+&= (1-cos\theta)(\textbf{v}\cdot\textbf{k})\textbf{k}+cos\theta\cdot\textbf{v}+sin\theta\cdot\textbf{k}\times\textbf{v}
+\end{align*}
+
+To calculate the corresponding matrix to $Rot_{\textbf{k},\theta}$, we use the following identities:
+
+\begin{align*}
+\textbf{k}\times\textbf{v} &= 
+	\begin{pmatrix}
+	0 & -k_z & k_y\\
+	k_z & 0 & -k_x\\
+	-k_y & k_x & 0
+	\end{pmatrix}\cdot \textbf{v} \\
+(\textbf{v}\cdot\textbf{k})\textbf{k} &= 
+\begin{pmatrix}
+k_x^2 & k_xk_y & k_xk_z \\
+k_xk_y & k_y^2 & k_yk_z \\
+k_xk_z & k_yk_z & k_z^2
+\end{pmatrix}\cdot \textbf{v}
+\end{align*}
+
+The effect of the rotation matrix can then be calculated as:
+
+\begin{align*}
+Rot_{\textbf{k},\theta}(\textbf{v}) &= (1-cos\theta)(\textbf{v}\cdot\textbf{k})\textbf{k}+cos\theta\cdot\textbf{v}+sin\theta\cdot\textbf{k}\times\textbf{v}\\
+&= \left((1-cos\theta) 
+\begin{pmatrix}
+k_x^2 & k_xk_y & k_xk_z \\
+k_xk_y & k_y^2 & k_yk_z \\
+k_xk_z & k_yk_z & k_z^2
+\end{pmatrix}+cos\theta\cdot
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix}+sin\theta\cdot
+\begin{pmatrix}
+0 & -k_z & k_y\\
+k_z & 0 & -k_x\\
+-k_y & k_x & 0
+\end{pmatrix}\right)\cdot\textbf{v}
+\end{align*}
+
+The rotation matrix itself can therefore be extracted as:
+
+\begin{align*}
+Rot_{\textbf{k},\theta} &= 
+(1-cos\theta) 
+\begin{pmatrix}
+k_x^2 & k_xk_y & k_xk_z \\
+k_xk_y & k_y^2 & k_yk_z \\
+k_xk_z & k_yk_z & k_z^2
+\end{pmatrix}+cos\theta\cdot
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix}+sin\theta\cdot
+\begin{pmatrix}
+0 & -k_z & k_y\\
+k_z & 0 & -k_x\\
+-k_y & k_x & 0
+\end{pmatrix}\\
+&= 
+\begin{pmatrix}
+k_xk_xV\theta+C\theta & k_yk_xV\theta-k_zS\theta & k_zk_xV\theta+k_yS\theta \\
+k_xk_yV\theta+k_zS\theta & k_yk_yV\theta+C\theta & k_zk_yV\theta-k_xS\theta \\
+k_xk_zV\theta-k_yS\theta & k_yk_zV\theta+k_xS\theta & k_zk_zV\theta+C\theta
+\end{pmatrix}
+\end{align*}
+
+Where $C\theta = cos\theta, S\theta = sin\theta$\\
+and $V\theta=1-cos\theta$
+
+
+
+
+
+
+
+
+
+
+
+

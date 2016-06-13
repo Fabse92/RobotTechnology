@@ -1,1 +1,24 @@
 \subsection*{Task 4.2}
+
+\subsubsection*{Task 4.2.1}
+Place illustration of workspace here
+
+\subsubsection*{Task 4.2.2}
+The manipulator is similar to the one in Task 4.1, but has only 2 Joints. The resulting matrices are $^0T_1$ and $^0T_2$ are the same.
+
+\begin{align*}
+^0T_1 &= 
+\begin{pmatrix}
+C1 & -S1 & 0 & l_1 C1\\
+S1 &  C1 & 0 & l_1 S1\\
+0  &  0  & 1 & 0\\
+0  &  0  & 0 & 1
+\end{pmatrix}
+^0T_2 &= 
+\begin{pmatrix}
+C1C2-S1S2 & -C1S2-S1C2 & 0 & C1l_2C2-S1l_2S2+l_1C1\\
+S1C2+C1S2 & -S1S2+C1C2 & 0 & S1l_2C2+C1l_2S2+l_1S1\\
+0  &  0  & 1 & 0\\
+0  &  0  & 0 & 1
+\end{pmatrix}
+\end{align*}

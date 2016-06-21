@@ -1,0 +1,105 @@
+⁰T_1
+c1 | 0 | s1  | 0
+s1 | 0 | -c1 | 0
+0  | 1 | 0   | 0.075
+0  | 0 | 0   | 1
+¹T_2
+c2 | -s2 | 0 | 0.75c2
+s2 | c2  | 0 | 0.75s2
+0  | 0   | 1 | 0
+0  | 0   | 0 | 1
+²T_3
+c3 | -s3 | 0 | 0.65c3
+s3 | c3  | 0 | 0.65s3
+0  | 0   | 1 | 0
+0  | 0   | 0 | 1
+³T_4
+c4 | -s4 | 0 | 0.625c4
+s4 | c4  | 0 | 0.625s4
+0  | 0   | 1 | 0
+0  | 0   | 0 | 1
+
+⁰T_2
+c1c2 | -s2c1 | s1  | 0.75c1c2
+s1c2 | -s1s2 | -c1 | 0.75s1c2
+s2   | c2    | 0   | 0.75s2 + 0.075
+0    | 0     | 0   | 1
+
+⁰T_3
+c1c2c3-s2c1s3 | -c1c2s3-s2c1c3 | s1  | 0.65c1c2c3-0.65c1s2s3+0.75c1c2
+s1c2c3-s1s2s3 | -s1c2s3-s1s2c3 | -c1 | 0.65s1c2c3-0.65s1s2s3+0.75s1c2
+s2c3+c2s3     | -s2s3+c2c3     | 0   | 0.65s2c3+0.65c2s3+0.75s2 + 0.075
+0             | 0              | 0   | 1
+
+⁰T_4
+c1c2c3c4-c1c4s2s3-c1c2s3s4-c1c3s2s4 | -c1c2c3s4+c1s2s3s4-c1c2c4s3-c1c3c4s2 | s1  | 0.625c3c4s2+0.625c2c4s3-0.625c1c2s3s4-0.625c1c3s2s4+0.65c1c2c3-0.65c1s2s3+0.75c1c2
+s1c2c3c4-c4s1s2s3-c2s1s3s4-c3s1s2s4 | -c2c3s1s4+s1s2s3s4-c2s3c4s1-c3c4s1s2 | -c1 | 0.625c2c3c4s1-0.625c4s1s2s3-0.625c2s1s3s4-0.625c3s1s2s4+0.65c2c3s1-0.65s1s2s3+0.75c2s1
+c3c4s2+c2c4s3-s2s3s4+c2c3s4         | -c3s2s4-c2s3s4-c4s2s3+c2c3c4         | 0   | 0.625c3c4s2+0.625s3c2c4-0.625s2s3s4+0.625c2c3s4+0.65c3s2+0.65c2s3+0.75s2+0.075
+0                                   | 0                                    | 0   | 1
+
+
+x und z bekannt, y = 0, Theta3 = 0
+
+0.625c4s2-0.625c1s2s4+0.65c1c2+0.75c1c2    = x
+0.625c2c4s1-0.625s1s2s4+0.65c2s1+0.75c2s1  = 0
+0.625c4s2+0.625c2s4+0.65s2+0.75s2+0.075    = z
+
+0.625cos(d)sin(b)-0.625cos(a)sin(b)sin(d)+0.65cos(a)cos(b)+0.75cos(a)cos(b)         = x
+0.625cos(b)cos(d)sin(a)-0.625sin(a)sin(b)sin(d)+0.65cos(b)sin(a)+0.75cos(b)sin(a)   = 0
+0.625cos(d)sin(b)+0.625cos(b)sin(d)+0.65sin(b)+0.75sin(b)+0.075                     = z
+
+0.625 Cos[d] Sin[b] - 0.625 Cos[a] Sin[b] Sin[d] + 0.65 Cos[a] Cos[b] + 0.75 Cos[a] Cos[b] == x
+0.625 Cos[b] Cos[d] Sin[a] - 0.625 Sin[a] Sin[b] Sin[d] + 0.65 Cos[b] Sin[a] + 0.75 Cos[b] Sin[a] == 0
+0.625 Cos[d] Sin[b] + 0.625 Cos[b] Sin[d] + 0.65 Sin[b] + 0.75 Sin[b] + 0.075 == z
+
+1.4 Cos[a] Cos[b] + 0.625 Cos[d] Sin[b] - 0.625 Cos[a] Sin[b] Sin[d] == x
+(1.4 Cos[b] + 0.625 Cos[b + d]) Sin[a] == 0
+0.075 + 1.4 Sin[b] + 0.625 Sin[b + d] == z
+
+
+a = 90
+
+0.625 Cos[d] Sin[b] == x
+(1.4 Cos[b] + 0.625 Cos[b + d]) == y // == 0?
+0.075 + 1.4 Sin[b] + 0.625 Sin[b + d] == z // Diese Information haben wir nicht, wenn wir z rotieren lassen
+
+
+
+
+Theta1 = 90, Theta3 = 0
+
+0         | 0          | 1 | 0.625c4s2
+c2c4-s2s4 | -c2s4-c4s2 | 0 | 0.625c2c4-0.625s2s4+0.65c2+0.75c2
+c4s2+c2s4 | -s2s4+c2c4 | 0 | 0.625c4s2+0.625c2s4+0.65s2+0.75s2+0.075
+0         | 0          | 0 | 1
+
+0.625c4s2 = x
+0.625c2c4-0.625c(Theta2+90)c(Theta4+90)+0.65c2+0.75c2                           = 0
+0.625c4c(Theta2+90)+0.625c2c(Theta4+90)+0.65c(Theta2+90)+0.75c(Theta2+90)+0.075 = 0
+
+0.625cos(d)sin(b) = x
+0.625cos(b)cos(d)-0.625sin(b)sin(d)+0.65cos(b)+0.75cos(b)       = 0
+0.625cos(d)sin(b)+0.625cos(b)sin(d)+0.65sin(b)+0.75sin(b)+0.075 = 0
+
+0.625cos(y)sin(x) = a
+0.625cos(x)cos(y)-0.625sin(x)sin(y)+0.65cos(x)+0.75cos(x)       = 0
+0.625cos(y)sin(x)+0.625cos(x)sin(y)+0.65sin(x)+0.75sin(x)+0.075 = 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

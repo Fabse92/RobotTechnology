@@ -1,0 +1,29 @@
+joint1 = Actor.GetJoint("base_link_to_cyl");
+
+
+
+joint2 = Actor.GetJoint("first_joint");
+
+
+
+joint3 = Actor.GetJoint("third_joint");
+
+
+while(true){
+
+val0 = 0.75+0.25*Mathf.Sin(Time.time/2.5);
+
+val1 = -0.4625*Mathf.Abs(Mathf.Sin(Time.time/5));
+
+val2 = (-val1 - Mathf.Asin(2.24f*Mathf.Sin(val1)));
+
+
+Actor.SetValue(joint1, val0);
+
+Actor.SetValue(joint2, val1);
+
+Actor.SetValue(joint3, val2);
+
+yield WaitForSeconds(0.01);
+
+}

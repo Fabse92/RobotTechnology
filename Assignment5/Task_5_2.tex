@@ -1,1 +1,56 @@
 \subsection*{Task 5.2}
+
+The explicit formula for basis splines with degree 1 is:
+
+\begin{align*}
+	N_{i,1}(t) &= 
+	\begin{cases}
+	1, \text{if } t_i \le t < t_{i+1} \\
+	0, \text{else} 
+	\end{cases}
+\end{align*}
+
+For degrees $> 1$ the following recursive function is used to calculate the basis splines:
+
+\begin{align*}
+	N_{i,k}(t) &= \frac{t-t_i}{t_{i+k-1}-t_i}N_{i,k-1}(t)+\frac{t_{i+k}-t}{t_{i+k}-t_{i+1}}N_{i+1,k-1}(t)
+\end{align*}
+
+For $k=2$ this dissolves to:
+
+\begin{align*}
+N_{i,2}(t) &= \frac{t-t_i}{t_{i+1}-t_i}N_{i,1}(t)+\frac{t_{i+2}-t}{t_{i+2}-t_{i+1}}N_{i+1,1}(t)\\
+&= 
+\begin{cases}
+\frac{t-t_i}{t_{i+1}-t_i}, & \text{if } t_i \le t < t_{i+1} \\
+\frac{t_{i+2}-t}{t_{i+2}-t_{i+1}}, & \text{if } t_{i+1} \le t < t_{i+2}\\
+0, & \text{else} 
+\end{cases}
+\end{align*}
+
+And for $k=3$:
+
+\begin{align*}
+N_{i,3}(t) &= \frac{t-t_i}{t_{i+2}-t_i}N_{i,2}(t)+\frac{t_{i+3}-t}{t_{i+3}-t_{i+1}}N_{i+1,2}(t)\\
+&= \frac{t-t_i}{t_{i+2}-t_i}\left(\frac{t-t_i}{t_{i+1}-t_i}N_{i,1}(t)+\frac{t_{i+2}-t}{t_{i+2}-t_{i+1}}N_{i+1,1}(t)\right)\\
+&+ \frac{t_{i+3}-t}{t_{i+3}-t_{i+1}}\left(\frac{t-t_{i+1}}{t_{i+2}-t_{i+1}}N_{i+1,1}(t)+\frac{t_{i+3}-t}{t_{i+3}-t_{i+2}}N_{i+2,1}(t)\right)\\
+&= \frac{t-t_i}{t_{i+2}-t_i}\cdot \frac{t-t_i}{t_{i+1}-t_i}N_{i,1}(t)\\
+&+ \left(\frac{t-t_i}{t_{i+2}-t_i}\cdot \frac{t_{i+2}-t}{t_{i+2}-t_{i+1}}+\frac{t_{i+3}-t}{t_{i+3}-t_{i+1}}\cdot \frac{t-t_{i+1}}{t_{i+2}-t_{i+1}} \right) N_{i+1,1}(t)\\
+&+ \left(\frac{t_{i+3}-t}{t_{i+3}-t_{i+1}} \cdot \frac{t_{i+3}-t}{t_{i+3}-t_{i+2}} \right) N_{i+2,1}(t)\\
+&=
+\begin{cases}
+\frac{t-t_i}{t_{i+2}-t_i}\cdot \frac{t-t_i}{t_{i+1}-t_i}, & \text{if } t_i \le t < t_{i+1} \\
+\frac{t-t_i}{t_{i+2}-t_i}\cdot \frac{t_{i+2}-t}{t_{i+2}-t_{i+1}}+\frac{t_{i+3}-t}{t_{i+3}-t_{i+1}}\cdot \frac{t-t_{i+1}}{t_{i+2}-t_{i+1}}, & \text{if } t_{i+1} \le t < t_{i+2}\\
+\frac{t_{i+3}-t}{t_{i+3}-t_{i+1}} \cdot \frac{t_{i+3}-t}{t_{i+3}-t_{i+2}}, & \text{if } t_{i+2} \le t < t_{i+3} \\
+0, & \text{else} 
+\end{cases}
+\end{align*}
+
+
+
+
+
+
+
+
+

@@ -8,7 +8,3 @@ set yrange [ -5 : 10 ]
 
 plot sample [*:0] 0, [0:*] 1+1*x
 
-set term png
-set output "task541.png"
-replot
-set term x11
